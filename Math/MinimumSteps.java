@@ -27,55 +27,25 @@ public class MinimumSteps {
     }
     static int makeProductOne(int[] arr, int N) {
         // code here
-        int[] count = new int[N];
         int step = 0;
-        int i = 0;
-        do{
-            if(arr[i]<0 && arr[i] == -1){
-                count[i] =arr[i];
+        int even = 0;
+        int zeroes = 0;
+        for (int element: arr) {
+            if(element == 0){
+                zeroes++;
             }
-            else if(arr[i]<0){
-                arr[i] = arr[i] + 1;
-                count[i] = arr[i];
-                step = step + 1;
-            }
-            else if(arr[i]>0 && arr[i] == 1){
-                count[i] = arr[i];
-            }
-            else if(arr[i]>0){
-                arr[i] = arr[i] - 1;
-                count[i] = arr[i];
-                step++;
-            }
-            else if(arr[i] == 0 && N==1){
-                arr[i] = arr[i] + 1;
-                count[i] = arr[i];
-                step++;
+            else if(element > 0) {
+                step = step + (element - 1);
             }
             else {
-                arr[i] = arr[i] - 1;
-                count[i] = arr[i];
-                step++;
+                even++;
+                step = step + (-1 - (element));
             }
-            if(count[i] == 1 || count[i] == -1){
-                i++;
-            }
-            if(i==N){
-                break;
-            }
-        }while(count[i] != 1 || count[i] != -1);
-
-        int product = 1;
-        for(int j=0;j<N;j++){
-            product = count[j] * product;
         }
-        if(product == 1){
-            return step;
-        }
-        else{
-            step = step + 2;
+        step = step + zeroes;
+        if(even%2 != 0 && zeroes == 0){
+            return step + 2;
         }
         return step;
-
     }
 }
