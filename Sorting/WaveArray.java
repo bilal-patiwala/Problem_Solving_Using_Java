@@ -7,7 +7,6 @@ import java.util.Arrays;
 In other words, arrange the elements into a sequence such that arr[1] >= arr[2] <= arr[3] >= arr[4] <= arr[5].....
 
 If there are multiple solutions, find the lexicographically smallest one.
-
 Example 1:
 
 Input:
